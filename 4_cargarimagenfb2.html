@@ -1,0 +1,37 @@
+<html>
+<!-- Enlaces de datos o Data Binding
+     Forma de enlazar informacion que esta en la vista con el modelo o el modelo con la vista.
+     En la vista se crea una variable que va estar vinculada al modelo, si el contenido de la variable
+     se actualiza en la vista, el cambio esta reflejado en el modelo.
+     Es decir, la sincronizacion se hace en ambos sentidos (double binding).
+-->
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+  </head>
+
+  <body ng-app>
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Cargando imagen de página de Facebook pero con una funcionalidad de boton</i></p>
+    <ul>
+      <li>Página de FB: <a href="https://www.facebook.com/thedodosite"> https://www.facebook.com/thedodosite</a></li>
+      <li>Id FB: 334191996715482</li>
+    </ul>
+
+    <!-- El ID se -->
+
+    <!--Declaramos la variable que se enlazará al modelo ng-model="fbID", creando un enlace al modelo -->
+    <input type="text" ng-model="fbID">
+
+    <!--ng-click="miNombre=Luis", creando un enlace al modelo -->
+    <input type="button" value="Luis">
+
+    <!-- Vemos el contenido de la variable, cuando este cambie desde el input -->
+    <p><img src="https://graph.facebook.com/{{fbID}}/picture?type=normal"></p>
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+
+    </body>
+</html>

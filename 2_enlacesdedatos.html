@@ -1,0 +1,28 @@
+<html ng-app>
+<!-- Enlaces de datos o Data Binding
+     Forma de enlazar informacion que esta en la vista con el modelo o el modelo con la vista.
+     En la vista se crea una variable que va estar vinculada al modelo, si el contenido de la variable
+     se actualiza en la vista, el cambio esta reflejado en el modelo.
+     Es decir, la sincronizacion se hace en ambos sentidos (double binding).
+-->
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+  </head>
+
+  <body>
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Enlaces de datos</i>.</p>
+
+    <!--Declaramos la variable que se enlazará al modelo ng-model="miNombre" -->
+    <input type="text" ng-model="miNombre">
+
+    <!-- Vemos el contenido de la variable, cuando este cambie desde el input -->
+    <p>Hola, {{miNombre}} </p>
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+
+    </body>
+</html>
