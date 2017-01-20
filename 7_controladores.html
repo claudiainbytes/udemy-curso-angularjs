@@ -1,0 +1,41 @@
+<html>
+<!-- CONTROLADORES -->
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+  </head>
+
+  <!-- ng-app Inicializamos Angular -->
+  <body ng-app>
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Controladores</i></p>
+
+    <ul>
+      <li>Funciones que añaden funcionalidad al scope(modelo)</li>
+      <li>Inicializan el scope</li>
+      <li>Directiva ng-controller: Para utilizar un controlador en la vista </li>
+      <li>NombreController: forma en la cual se llama un controlador</li>
+      <li>Metodos y propiedades del controlador se pueden usar en la vista</li>
+      <li>Solo deben contener la logica de la aplicacion para una sola vista</li>
+    </ul>
+
+    <!-- para utilizar un controlador, llamamos el nombre del controlador -->
+    <div ng-controller="MainController"></div>
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+
+    <!-- Crear un controlador es como si fuesemos a crear una funcion en javascript -->
+    <script>
+    //Definir un controlador por medio de la funcion controller()
+    //Parametro 1: Nombre que le daremos al controlador MainController
+    //Parametro 2: Definiendo la funcion como parametro donde se inyecta como argumento el $scope
+    controller('MainController', function($scope){
+
+    });
+    </script>
+    <div ng-controller="MainController"></div>
+
+    </body>
+</html>

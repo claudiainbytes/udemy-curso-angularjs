@@ -1,0 +1,134 @@
+<html>
+<!-- Enlaces de datos o Data Binding
+     Forma de enlazar informacion que esta en la vista con el modelo o el modelo con la vista.
+     En la vista se crea una variable que va estar vinculada al modelo, si el contenido de la variable
+     se actualiza en la vista, el cambio esta reflejado en el modelo.
+     Es decir, la sincronizacion se hace en ambos sentidos (double binding).
+-->
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+
+    <style>
+    .error{
+      color:red;
+      background-color: yellow;
+    }
+    .bold{
+      font-weight: bold;
+    }
+    div{
+      padding: 20 0 20 0;
+    }
+    </style>
+
+  </head>
+
+  <!-- ng-app Inicializamos Angular -->
+  <body ng-app>
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Directivas comunes</i></p>
+
+    <div><h5>ng-init</h5><p>Permite inicializar una variable con un valor o varias a la vez.</p></div>
+    <span ng-init="x=500">
+      {{x}}
+    </span>
+
+    <div><h5>ng-init</h5><p>Es posible inicializar mas de una variable a la vez.</p></div>
+    <span ng-init="x=500; y=100">
+      {{x + "," + y }}
+    </span>
+
+    <div><h5>ng-init</h5><p>Inicializando variables más complejas.</p></div>
+    <span ng-init="persona = {nombre:'Hello', apellido:'Kitty'}">
+      {{persona.nombre + " " + persona.apellido }}
+    </span>
+
+    <div><h5>ng-if</h5><p>Realiza comprobaciones con estructuras de control if de forma sencilla</p></div>
+    <input type="text"  ng-model="a">
+    <span ng-if="a > 100"> a = {{a}}, a es mayor a 100 </span>
+    <span ng-if="a < 100"> a = {{a}}, a es menor a 100 </span>
+    <span ng-if="a == 100"> a = {{a}}, a es igual a 100 </span>
+
+    <div><h5>ng-click</h5><p>Realiza una rutina cuando se ejecuta un click sobre un elemento tipo boton. Escucha
+    dentro del evento de click y realiza lo que esta dentro de las comillas</p></div>
+    <input type="button" value="Incrementar" ng-click="contador = contador + 1" ng-init="contador=0">
+    <p>{{contador}}</p>
+
+    <div><h5>ng-mouseOver</h5><p>Escucha el mouse cuando pasa sobre el elemento y ejecuta el codigo que esta dentro de las comillas. </p></div>
+    <input type="button" value="Incrementar" ng-mouseOver="contador2 = contador2 + 1" ng-init="contador2=0">
+    <p>{{contador2}}</p>
+
+    <div><h5>ng-dblclick</h5><p>Escucha el mouse cuando se hace doble click sobre el elemento y ejecuta el codigo que esta dentro de las comillas. </p></div>
+    <input type="button" value="Incrementar" ng-dblclick="contador3 = contador3 + 1" ng-init="contador3=0">
+    <p>{{contador3}}</p>
+
+    <div><h5>ng-keypress</h5><p>Hace una rutina cuando se presiona un elemento del teclado</p></div>
+    <input type="text"  ng-keypress="contador4 = contador4 + 1" ng-init="keypress4=0">
+    <p>{{contador4}}</p>
+
+    <div><h5>ng-show ng-hide</h5><p>Si la condicion se cumple se muestra ng-show</p></div>
+    <!--Definimos  una variable en el modelo-->
+      <input type="checkbox" ng-model="showHide">
+    </br>
+    <div>
+      <!--Si la variable del modelo es 1, chuleado, muestre primera opcion-->
+      <span ng-show="showHide">
+        Show está seleccionado
+      </span>
+    </div>
+    <div>
+      <!--Si la variable del modelo es 0, deschuleado, muestre segunda opcion-->
+      <span ng-hide="showHide">
+        Show no está seleccionado
+      </span>
+    </div>
+
+    <div><h5>ng-repeat</h5><p>Itera sobre un conjunto de elementos</p></div>
+    <!--inicializa una variable json llamada personas -->
+    <p ng-init="personas=[
+                  {nombre:'Claudia', pais:'Colombia'},
+                  {nombre:'Maria', pais:'España'},
+                  {nombre:'Pablo', pais:'Argentina'}
+                  ]"><b>Personas</b></p>
+    <span ng-repeat="p in personas">
+      <!-- accedemos a cada atributo del elemento -->
+      {{p.nombre + " es de "+ p.pais  }} </br>
+    </span>
+
+    <div><h5>ng-class</h5><p>Añade clases dinamicamente a elementos.
+      Primera forma: Manejando una sola variable. Ingresa el valor "error" o "bold" o "bold error" correspondiente
+      a los estilos css definidos al principio del codigo. Si ingreso error, el parrafo que tiene la
+      directiva ng-class cambiara de color de fondo y fuente. Si ingreso bold, cambiara el grosor del texto.
+      Si ingreso ambos, la apariencia del parrafo cambiara de color de fondo, fuente y grosor de texto.
+    </p></div>
+    <input type="text" ng-model="estilo1">
+    <p ng-class="estilo1">ng-class test 1</p>
+
+    <div><h5>ng-class</h5><p>Añade clases dinamicamente a elementos.
+      Segunda forma: Manejando un array de variables. Se definen dos elementos de tipo input donde cada uno tiene
+      una variable en el modelo. El parrafo tiene la directiva ng-class que recibirá un array variables del modelo,
+      lo cual, la clase o clases van asignadas al elemento.
+    </p></div>
+    <input type="text" ng-model="estilo2">
+    <input type="text" ng-model="estilo3">
+    <p ng-class="[estilo2, estilo3]">ng-class test 2</p>
+
+    <div><h5>ng-class</h5><p>Añade clases dinamicamente a elementos.
+      Tercera forma: Por medio de un objeto json. Se definen dos elementos de tipo checkbox donde cada uno tiene
+      una variable en el modelo. El parrafo tiene la directiva ng-class mira si el valor de alguna de esas opciones es verdadera
+      , si es asi retornara el nombre de la clase que afectara este elemento.
+    </p></div>
+    <input type="checkbox" ng-model="usarError">Error
+    <input type="checkbox" ng-model="usarBold">Bold
+    <!-- ´nombre_clase:nombre_variable_modelo´-->
+    <p ng-class="{'error':usarError, 'bold':usarBold}">ng-class test 3</p>
+
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+
+
+    </body>
+</html>

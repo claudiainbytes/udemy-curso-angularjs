@@ -1,0 +1,46 @@
+<html>
+<!-- MODULOS -->
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+  </head>
+
+  <!-- ng-app Inicializamos Angular -->
+  <body ng-app>
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Modulos</i></p>
+
+    <ul>
+      <li>Unidades de encapsulamiento para prevenir colisiones en el espacio global.</li>
+      <li>Si esta bien definidos, se pueden reutilizar</li>
+      <li>Es donde se escribe el codigo de la aplicacion</li>
+      <li>Una aplicacion puede tener varios modulos. Cada uno con codigo relacionado con diferentes partes de la aplicacion</li>
+    </ul>
+
+    <!-- para utilizar un controlador, llamamos el nombre del controlador -->
+    <div ng-controller="MainController"></div>
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+
+    <!-- Crear un modulo -->
+    <script>
+
+    //Para definir el modulo
+    //Parametro 1: nombre del modulo
+    //Parametro 2: un arreglo con las dependencias que vamos a pasar a este modulo
+    angular.module('miModulo', []);
+
+    //Para obtener un modulo previamente
+    //Retorna un objeto que es el modulo
+    angular.module('miModulo');
+
+
+
+    });
+    </script>
+    <div ng-controller="MainController"></div>
+
+    </body>
+</html>

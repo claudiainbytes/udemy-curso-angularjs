@@ -9,26 +9,24 @@
     <title>UDEMY - ANGULAR JS</title>
   </head>
 
+  <!-- ng-app Inicializamos Angular -->
   <body ng-app>
 
     <h1>UDEMY - ANGULAR JS</h1>
 
-    <p><i>Cargando imagen de página de Facebook pero con una funcionalidad de boton</i></p>
-    <ul>
-      <li>Página de FB: <a href="https://www.facebook.com/thedodosite"> https://www.facebook.com/thedodosite</a></li>
-      <li>Id FB: 334191996715482</li>
-    </ul>
+    <p><i>Reemplazar nombres usando enlaces de datos</i></p>
 
-    <!-- El ID se -->
-
-    <!--Declaramos la variable que se enlazará al modelo ng-model="fbID", creando un enlace al modelo -->
-    <input type="text" ng-model="fbID">
+    <!--Declaramos la variable que se enlazará al modelo ng-model="miNombre", creando un enlace al modelo -->
+    <input type="text" ng-model="miNombre">
 
     <!--ng-click="miNombre=Luis", creando un enlace al modelo -->
-    <input type="button" value="Luis">
+    <input type="button" value="Cambiar Nombre" ng-click="miNombre='Maria'">
 
-    <!-- Vemos el contenido de la variable, cuando este cambie desde el input -->
-    <p><img src="https://graph.facebook.com/{{fbID}}/picture?type=normal"></p>
+    <!-- Imprimiendo el valor del modelo ng-model miNombre a la vista -->
+    <p>{{miNombre}}</p>
+
+    <!-- ng-init="miNombre='Paula'" inicializamos  la variable del modelo -->
+    <p ng-init="miNombre='Paula'">{{miNombre}}</p>
 
     <!-- El script de AngularJS debe estar al final -->
     <script src="js/angular.min.js"></script>
