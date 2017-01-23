@@ -1,0 +1,49 @@
+<html>
+<!-- ANIDAMIENTO DE CONTROLADORES -->
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+    <style>
+    #controladorExterno{
+      background-color: grey;
+      padding: 10px;
+    }
+    #controladorInterno{
+      background-color: red;
+      padding: 10px;
+    }
+    </style>
+  </head>
+
+  <!-- ng-app Inicializamos Angular, pasando el nombre del modulo que se utilizara -->
+  <body ng-app="miModulo">
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Ejemplo: Alias de controladores</i></p>
+
+    <p>Sin Alias, utilizando propiedad $parent.nombre</p>
+
+    <div ng-controller="PadreController">
+      {{ nombre }}
+      <div ng-controller="HijoController">
+          {{ nombre + ', ' + $parent.nombre }}
+      </div>
+    </div>
+
+    <p>Con Alias, a cada controlador se declara un alias para evitar el uso de $parent.nombre.
+      A partir del alias, podemos acceder al atributo declarado en cada controlador sin llegar a confusiones
+    </p>
+
+    <div ng-controller="PadreaController as padre">
+      {{ padre.nombre }}
+      <div ng-controller="HijoaController as hijo">
+          {{ hijo.nombre + ', ' + padre.nombre }}
+      </div>
+    </div>
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/app12.js"></script>
+
+    </body>
+</html>

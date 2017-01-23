@@ -1,0 +1,71 @@
+<html>
+<!-- MODULOS -->
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+  </head>
+
+  <!-- ng-app Inicializamos Angular, pasando el nombre del modulo que se utilizara -->
+  <body ng-app="adivinarNumero">
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Ejemplo: Adivinar el número</i></p>
+
+    <!-- para utilizar un controlador, llamamos el nombre del controlador -->
+    <div ng-controller="AdivinarNumeroController">
+
+          <h3>Ejemplo: Adivinar el número entre 1 y 100</h3>
+          <!-- Cuantas veces adivinamos el número -->
+          <p>Intentos: {{intentos}}</p>
+
+          <input type="number" ng-model="numeroUsuario"/>
+            <!-- llama el metodo sumarUno definido en el controlador -->
+          <button ng-click="verificar()">Verificar</button>
+            <!-- llama el metodo sumarUno definido en el controlador -->
+          <button ng-click="inicializar()">Comenzar de nuevo</button>
+
+          <p ng-show="diferencia < 0">Muy Alto</p>
+          <p ng-show="diferencia > 0">Muy Bajo</p>
+          <p ng-show="diferencia == 0">Perfecto!</p>
+
+    </div>
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+
+    <!-- Crear un modulo -->
+    <script>
+
+    //Para definir el modulo contador
+    //Parametro 1: nombre del modulo
+    //Parametro 2: un arreglo con las dependencias que vamos a pasar a este modulo (inyeccion de dependencias)
+    //function($scope){ es como definimos el controlador, inyectandole el modelo $scope
+    angular.module('adivinarNumero', [])
+           .controller('AdivinarNumeroController', function($scope){
+
+          //definir funcion para inicializar la aplicacion
+          $scope.inicializar = function(){
+            $scope.intentos = 0;
+            $scope.numeroUsuario = null;
+            $scope.diferencia = null;
+            $scope.numeroSecreto = Math.floor(( 100 * Math.random()) + 1);
+          };
+
+          //metodo que enlaza el modelo a la vista
+          $scope.verificar = function(){
+            $scope.intentos += 1;
+            $scope.diferencia = $scope.numeroSecreto - $scope.numeroUsuario;
+          }
+
+          //Inicializar la aplicacion al ser cargada
+          $scope.inicializar();
+      });
+
+    //Para obtener un modulo definido previamente, contador
+    //Retorna un objeto que es el modulo, sin el segundo argumento es decir, sin las dependencias
+    angular.module('adivinarNumero');
+
+    </script>
+
+    </body>
+</html>

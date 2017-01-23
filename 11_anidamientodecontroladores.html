@@ -1,0 +1,42 @@
+<html>
+<!-- ANIDAMIENTO DE CONTROLADORES -->
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+    <style>
+    #controladorExterno{
+      background-color: grey;
+      padding: 10px;
+    }
+    #controladorInterno{
+      background-color: red;
+      padding: 10px;
+    }
+    </style>
+  </head>
+
+  <!-- ng-app Inicializamos Angular, pasando el nombre del modulo que se utilizara -->
+  <body ng-app="miApp">
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Ejemplo: Anidamiento de controladores</i></p>
+
+    <p><strong>Podemos ver: </strong>{{ propiedadRaiz }}</p>
+    <!-- controladorExterno, accede a informacion definida en el scope externo y en el scope(variables) raiz
+ el que se crea cuando inicializamos la aplicacion, más no en el interno -->
+    <div id="controladorExterno" ng-controller="controladorExterno">
+      <p><strong>Podemos ver:</strong>{{ propiedadRaiz }} y {{ propiedadExterna }}</p>
+      <!-- controladorInterno, accede a informacion definida en el scope interno, externo y en el scope raiz
+    el que se crea cuando inicializamos la aplicacion -->
+      <div id="controladorInterno" ng-controller="controladorInterno">
+          <p><strong>Podemos ver: </strong>{{ propiedadRaiz }} y {{ propiedadExterna }} y {{ propiedadInterna }}</p>
+          <p>{{ mensaje }}</p>
+      </div>
+    </div>
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+
+    </body>
+</html>

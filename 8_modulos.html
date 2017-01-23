@@ -13,8 +13,9 @@
 
     <ul>
       <li>Unidades de encapsulamiento para prevenir colisiones en el espacio global.</li>
-      <li>Si esta bien definidos, se pueden reutilizar</li>
+      <li>Si esta bien definidos, se puede reutilizar codigo</li>
       <li>Es donde se escribe el codigo de la aplicacion</li>
+      <li>Un modulo esta relacionado con una tarea de la aplicacion</li>
       <li>Una aplicacion puede tener varios modulos. Cada uno con codigo relacionado con diferentes partes de la aplicacion</li>
     </ul>
 
@@ -29,16 +30,15 @@
 
     //Para definir el modulo
     //Parametro 1: nombre del modulo
-    //Parametro 2: un arreglo con las dependencias que vamos a pasar a este modulo
+    //Parametro 2: un arreglo con las dependencias que vamos a pasar a este modulo (inyeccion de dependencias)
     angular.module('miModulo', []);
 
-    //Para obtener un modulo previamente
-    //Retorna un objeto que es el modulo
+    //Para obtener un modulo definido previamente
+    //Retorna un objeto que es el modulo, sin el segundo argumento es decir, sin las dependencias
     angular.module('miModulo');
 
-
-
     });
+    
     </script>
     <div ng-controller="MainController"></div>
 

@@ -1,0 +1,114 @@
+<html>
+<!-- DIRECTIVAS PERSONALIZADAS
+
+Se pueden crear directivas personalizadas de la siguientes formas:
+
+ELEMENTOS
+
+<mi-directiva></mi-directiva>
+
+ATRIBUTOS
+
+<div mi-directiva>
+
+CLASES
+
+<div class="mi-directiva">
+
+COMENTARIOS
+
+<!-- directive: mi-directiva -->
+
+<!-- -->
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+    <style>
+    #controladorExterno{
+      background-color: grey;
+      padding: 10px;
+    }
+    #controladorInterno{
+      background-color: red;
+      padding: 10px;
+    }
+    </style>
+  </head>
+
+  <!-- ng-app Inicializamos Angular, pasando el nombre del modulo que se utilizara -->
+  <body ng-app="miModulo">
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Directivas personalizadas</i></p>
+
+    <p>E - Como elemento:</p>
+
+    <mi-directiva></mi-directiva>
+
+    <p>A - Como atributo:</p>
+
+    <h2 mi-directiva></h2>
+
+    <p>C - Como clase:</p>
+
+    <p class="mi-directiva">hola</p>
+
+    <p>M - Como comentario:</p>
+
+    <!-- directive: mi-directiva -->
+
+    <p><i>Usando un templateUrl para la directiva</i></p>
+
+    <p>E - Como elemento:</p>
+
+    <mi-directiva2></mi-directiva2>
+
+    <p>A - Como atributo:</p>
+
+    <h2 mi-directiva2></h2>
+
+    <p>C - Como clase:</p>
+
+    <p class="mi-directiva2">hola</p>
+
+    <p>M - Como comentario:</p>
+
+    <!-- directive: mi-directiva2 -->
+
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+
+    <script>
+    //Creacion directiva, despuez de inicializar el modulo
+    //Directivas se crean parecidas a los controladores
+    //.directive('miDirectiva', function(){ });
+    //1 Parametro: Nombre de la directiva
+    //2 Parametro: La funcion retornara un objeto JSON llamado return que tiene las siguientes opciones
+    //restrict: cual de las cuatro opciones de directiva se definira la directiva, por defecto es false
+    //AECM: A - atributo, E - elemento, C - clase, M - comentarios
+    //replace: si es verdadera, reemplaza el elemento del dom en donde esta la directiva que estamos utilizando
+    //template: codigo que vamos a usar dentro de la directiva
+    //templateUrl: 'directives/ag.html' codigo donde esta la estructura de la directiva personalizada
+    //miDirectiva = <mi-directiva>
+
+    angular.module('miModulo',[])
+           .directive('miDirectiva', function(){
+              return{
+                restrict: 'AECM',
+                replace: true,
+                template: '<h1>Angular JS directiva personalizada</h1>'
+              };
+           })
+           .directive('miDirectiva2', function(){
+              return{
+                restrict: 'AECM',
+                replace: true,
+                templateUrl: 'file:///E:/UdemyAngularJS/miDirectiva.html'
+              };
+           });
+
+    </script>
+
+    </body>
+</html>

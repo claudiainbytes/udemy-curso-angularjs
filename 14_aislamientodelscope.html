@@ -1,0 +1,96 @@
+<html>
+<!-- AISLAMIENTO DEL SCOPE -->
+<!-- Es util para agrupar codigo y no tener que repetirlo -->
+
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+    <style>
+    #controladorExterno{
+      background-color: grey;
+      padding: 10px;
+    }
+    #controladorInterno{
+      background-color: red;
+      padding: 10px;
+    }
+    </style>
+  </head>
+
+  <!-- ng-app Inicializamos Angular, pasando el nombre del modulo que se utilizara -->
+  <body ng-app="miModulo">
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Aislamiento del scope</i></p>
+
+    <!-- Para que la directiva personalizada mi-Directiva muestre los datos del objeto JSON libro definido en el scope
+    este se encapsula por medio de ng-controller miControlador -->
+    <div ng-controller="miControlador">
+
+      <mi-directiva></mi-directiva>
+
+      <!-- Podemos modificar los datos del scope -->
+      <mi-directiva2></mi-directiva2>
+
+      <!-- Aplicando aislamiento del scope -->
+      <mi-directiva3 libro2-autor="{{libro2.autor}}"></mi-directiva3>
+
+    </div>
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+
+    <script>
+    //Aislamiento del scope
+
+    //Podemos definir una directiva (miDirectiva) que pueda tener acceso al controlador miControlador
+    //La directiva personalizada miDirectiva tiene un template html que muestra como resultado el objeto JSON llamado libro
+    //que esta creado en el scope
+
+    angular.module('miModulo',[])
+           .directive('miDirectiva', function(){
+              return{
+                restrict: 'E',
+                replace: true,
+                template: '<ul><li> {{ libro.autor }} </li><li> {{ libro.titulo }} </li><li> {{ libro.publicacion }} </li>'
+              }
+           })
+           .directive('miDirectiva2', function(){
+             //Desde una directiva no es correcto modificar el atributo perteneciente al objeto del modelo,
+             //para ello podemos modificar el scope
+              return{
+                restrict: 'E',
+                replace: true,
+                template: '<ul><li> {{ libro2.autor = "Jorge Isaacs" }} </li><li> {{ libro2.titulo = "Maria" }} </li><li> {{ libro2.publicacion = "1929" }} </li>'
+              }
+           })
+           .directive('miDirectiva3', function(){
+              return{
+                restrict: 'E',
+                replace: true,
+                template: '<ul><li> {{ libro2Autor }} </li><li> {{ libro2Titulo }} </li><li> {{ libro2Publicacion }} </li>',
+                //aislamos el scope usando la propiedad scope pasandolo vacio, es decir usando uno nuevo
+                scope:{
+                    libro2Autor:"@", //Estamos recibiendo texto
+                    libro2Titulo:"@", //Estamos recibiendo texto
+                    libro2Publicacion:"@", //Estamos recibiendo texto
+                }
+              }
+           })
+           .controller('miControlador', function($scope){
+              $scope.libro = { autor:'Gabriel Garcia Marquez',
+                               titulo:'Cien Años De Soledad',
+                               publicacion:'1967'
+                             };
+              $scope.libro2 = {autor:'Julio Cortazar',
+                               titulo:'Rayuela',
+                               publicacion:'1963'
+                             };
+           });
+
+    angular.module('miModulo');
+
+    </script>
+
+    </body>
+</html>

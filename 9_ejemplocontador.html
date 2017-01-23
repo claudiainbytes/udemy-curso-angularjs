@@ -1,0 +1,63 @@
+<html>
+<!-- MODULOS -->
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+  </head>
+
+  <!-- ng-app Inicializamos Angular, pasando el nombre del modulo que se utilizara -->
+  <body ng-app="contador">
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Ejemplo: Contador</i></p>
+
+    <ul>
+      <li>Incrementa o decrementa segun el uso de un boton</li>
+    </ul>
+
+    <!-- para utilizar un controlador, llamamos el nombre del controlador -->
+    <div ng-controller="MainController">
+        <!-- llama el metodo sumarUno definido en el controlador -->
+        <button ng-click="sumarUno()">Sumar Uno</button>
+        <!-- llama el metodo restarUno definido en el controlador -->
+        <button ng-click="restarUno()">Restar Uno</button>
+        <p>Contador: {{contador}}</p>
+    </div>
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+
+    <!-- Crear un modulo -->
+    <script>
+
+    //Para definir el modulo contador
+    //Parametro 1: nombre del modulo
+    //Parametro 2: un arreglo con las dependencias que vamos a pasar a este modulo (inyeccion de dependencias)
+    //function($scope){ es como definimos el controlador, inyectandole el modelo $scope
+    angular.module('contador', [])
+           .controller('MainController', function($scope){
+
+          //inicializando la variable en el modelo
+          $scope.contador = 0;
+
+          //metodo que enlaza el modelo a la vista
+          $scope.sumarUno = function(){
+            $scope.contador += 1;
+          }
+
+          //metodo que enlaza el modelo a la vista
+          $scope.restarUno = function(){
+            $scope.contador -= 1;
+          }
+
+      });
+
+    //Para obtener un modulo definido previamente, contador
+    //Retorna un objeto que es el modulo, sin el segundo argumento es decir, sin las dependencias
+    angular.module('contador');
+
+    </script>
+    <div ng-controller="MainController"></div>
+
+    </body>
+</html>
