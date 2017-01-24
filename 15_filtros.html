@@ -1,0 +1,57 @@
+<html>
+<!-- FILTROS -->
+<!-- Sirven para darle formato a la información que se le muestra al usuario
+Algunos filtros: moneda, fecha, formato de texto, limite de caracteres, numeros, order.. 
+Nuevos filtros pueden ser creados
+
+se usa en las expresiones
+
+{{expresion|fitro}}
+
+Ejemplo para mostrar palabras en mayuscula:
+
+{{ "Que viva Mexico" | uppercase }}
+
+Ejemplo de filtros para pasar argumentos, para darle formato a expresion:
+
+{{hoy|date:'shortDate'}}
+
+-->
+
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+  </head>
+
+  <!-- ng-app Inicializamos Angular, pasando el nombre del modulo que se utilizara -->
+  <body ng-app="miModulo">
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Filtros</i></p>
+
+  
+    <div>
+
+    <p>Ejemplo para mostrar palabras en mayuscula:</p>
+
+    {{ "Que viva Mexico" | uppercase }}
+
+    <p>Ejemplo de filtros para pasar argumentos, para darle formato a expresion:</p>
+
+    {{ 1485295379 |date:'longDate'}}
+
+    </div>
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+
+    <script>
+
+    angular.module('miModulo',[]);
+
+    angular.module('miModulo');
+
+    </script>
+
+    </body>
+</html>

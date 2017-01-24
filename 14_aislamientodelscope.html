@@ -27,13 +27,54 @@
     este se encapsula por medio de ng-controller miControlador -->
     <div ng-controller="miControlador">
 
+      <!-- Podemos ver los datos definidos dentro del controlador
+      la directiva tiene acceso al modelo(scope) que se ha definido por el controlador -->
+      <p>Mi Directiva</p>
+      <!-- Definir directivas es agrupar codigo para no tener que repetir, es facil cuando creamos nuestras directivas.
+      Hay otros casos donde esto no es conveniente, ya que otras personas crean directivas. -->
       <mi-directiva></mi-directiva>
 
-      <!-- Podemos modificar los datos del scope -->
+      <p>Mi Directiva 2</p>
+      <!-- Podemos modificar los datos del scope, si se hace un asignamiento en el template -->
+      <!-- No se puede modificar una variable del modelo(scope) dentro de la directiva
+      Para evitarlo, se debe aislar el scope por medio de la propiedad scope dentro de la directiva -->
       <mi-directiva2></mi-directiva2>
 
-      <!-- Aplicando aislamiento del scope -->
-      <mi-directiva3 libro2-autor="{{libro2.autor}}"></mi-directiva3>
+      <p>Mi Directiva 3</p>
+      <!-- Aplicando aislamiento del scope nos indicaria que no vaya a heredar, o no utilize ningun scope, vamos a usar uno nuevo -->
+      <!-- Pasos para aislar el scope -->
+      <!-- 1. en la directiva definimos la propiedad scope pero vacia scope:{ } -->
+      <!-- 2. en la propiedad scope definimos el atributo dentro de { } que esta en la variable del modelo(scope) definida
+           ejemplo: 
+           Definiendo en el controlador: $scope.libro = {'titulo': 'La Odisea', 'autor': 'Homero'}
+           Definiendo en la directiva, propiedad scope: scope : { libroTitulo : "@" }
+           3. en la vista, buscamos la directiva personalizada y normalizamos el atributo:
+           Si en el scope de la directiva esta: libroTitulo
+           En el atributo de la directiva debe estar: libro-titulo = "{{libro.titulo}}"
+           Es decir, el valor {{libro.titulo}} corresponde al objeto del modelo(scope) libro, cuya propiedad es titulo
+           <mi-directiva libro-titulo="{{libro.titulo}}"> 
+      -->
+      <!-- Pasos para pasar funciones a la directiva -->
+      <!-- 1. en la directiva definimos la propiedad scope pero vacia scope:{ } -->
+      <!-- 2. en la propiedad scope definimos la funcion dentro de { } que esta en la variable del modelo(scope) definida
+           ejemplo: 
+           Definiendo en el controlador: $scope.enMayuscula = $scope.enMayuscula = function(libro){
+                return libro.titulo.toUpperCase() + ' ' + libro.autor.toUpperCase() + libro.publicacion.toUpperCase();
+              };
+           Definiendo en la directiva, propiedad scope: scope : { enMayuscula : "&" } & es para funciones
+           3. en la vista, buscamos la directiva personalizada y normalizamos el atributo:
+           Si en el scope de la directiva esta: enMayuscula
+           En el atributo de la directiva debe estar: en-mayuscula = "enMayuscula(libro3)"
+           Es decir, el valor enMayuscula(libro3) corresponde a la funcion del modelo(scope) definida en el controlador, cuyo parametro es el objeto libro3
+           4. Modificando el template en la directiva:
+           <mi-directiva en-mayuscula="enMayuscula(libro3)"> 
+           5. En el template, la función se invocara dentro de la expresion, donde se pasa como parametro un objeto JSON
+           {libro: libro3Objeto} donde libro hace referencia al argumento definido en la funcion, y libro3Objeto es 
+           el parametro correspondiente a la definicion libro3Objeto que esta la propiedad scope de la directiva
+           {{ enMayuscula( {libro: libro3Objeto} )}}
+      -->
+
+      <mi-directiva3 libro3-autor="{{libro3.autor}}" libro3-titulo="{{libro3.titulo}}" libro3-publicacion="{{libro3.publicacion}}" libro3-objeto="libro3" en-mayuscula="enMayuscula(libro3)" ></mi-directiva3>
 
     </div>
 
@@ -52,7 +93,7 @@
               return{
                 restrict: 'E',
                 replace: true,
-                template: '<ul><li> {{ libro.autor }} </li><li> {{ libro.titulo }} </li><li> {{ libro.publicacion }} </li>'
+                template: '<ul><li> {{ libro.autor }} </li><li> {{ libro.titulo }} </li><li> {{ libro.publicacion }} </li></ul>'
               }
            })
            .directive('miDirectiva2', function(){
@@ -61,20 +102,21 @@
               return{
                 restrict: 'E',
                 replace: true,
-                template: '<ul><li> {{ libro2.autor = "Jorge Isaacs" }} </li><li> {{ libro2.titulo = "Maria" }} </li><li> {{ libro2.publicacion = "1929" }} </li>'
+                template: '<ul><li> {{ libro2.autor = "Jorge Isaacs" }} </li><li> {{ libro2.titulo = "Maria" }} </li><li> {{ libro2.publicacion = "1929" }} </li></ul>'
               }
            })
            .directive('miDirectiva3', function(){
               return{
                 restrict: 'E',
                 replace: true,
-                template: '<ul><li> {{ libro2Autor }} </li><li> {{ libro2Titulo }} </li><li> {{ libro2Publicacion }} </li>',
-                //aislamos el scope usando la propiedad scope pasandolo vacio, es decir usando uno nuevo
+                template: '<div><ul><li> {{ libro3Autor }} </li><li> {{ libro3Titulo }} </li><li> {{ libro3Publicacion }} </li><li> {{ libro3Objeto }} </li></ul><p><i>Mostrando la funcion enMayuscula:</i><p>{{ enMayuscula( {libro: libro3Objeto} )}}</p></div>',
                 scope:{
-                    libro2Autor:"@", //Estamos recibiendo texto
-                    libro2Titulo:"@", //Estamos recibiendo texto
-                    libro2Publicacion:"@", //Estamos recibiendo texto
-                }
+                    libro3Autor:"@", //Estamos recibiendo texto
+                    libro3Titulo:"@", //Estamos recibiendo texto
+                    libro3Publicacion:"@", //Estamos recibiendo texto
+                    libro3Objeto:"=", //Estamos recibiendo el objeto completo, usamos el simbolo =
+                    enMayuscula: "&" //Estamos recibiendo la funcion enMayuscula
+                    }
               }
            })
            .controller('miControlador', function($scope){
@@ -86,6 +128,14 @@
                                titulo:'Rayuela',
                                publicacion:'1963'
                              };
+              $scope.libro3 = {autor:'Mary Shelley',
+                               titulo:'Frankenstein',
+                               publicacion:'1818'
+                             };
+              $scope.enMayuscula = function(libro){
+                return libro.titulo.toUpperCase() + ' ' + libro.autor.toUpperCase() + ' ' + libro.publicacion.toUpperCase();
+              };
+
            });
 
     angular.module('miModulo');
