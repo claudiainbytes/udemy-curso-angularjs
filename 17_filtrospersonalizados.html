@@ -1,0 +1,49 @@
+<html ng-app="filtros">
+<!-- FILTROS --> 
+<!-- Sirven para darle formato a la información que se le muestra al usuario
+Algunos filtros: moneda, fecha, formato de texto, limite de caracteres, numeros, order.. 
+Nuevos filtros pueden ser creados
+
+se usa en las expresiones
+
+{{expresion|fitro}}
+
+Ejemplo para mostrar palabras en mayuscula:
+
+{{ "Que viva Mexico" | uppercase }}
+
+Ejemplo de filtros para pasar argumentos, para darle formato a expresion:
+
+{{hoy|date:'shortDate'}}
+
+-->
+
+  <head>
+    <title>UDEMY - ANGULAR JS</title>
+  </head>
+
+  <body>
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Filtros personalizados</i></p>
+
+    <div ng-controller="FiltrosController">
+    <ul>
+
+    <li>Filtro personalizado: {{ 'Estas son las mañanitas' | suspensivos }}</li>
+    <li>Filtro personalizado limitado: {{ 'Estas son las mañanitas' | limitTo:5 | suspensivos }}</li>
+    <li>Filtro personalizado primera en mayusculas: {{ 'estas son las mañanitas' | limitTo:5 | primeraMayusculas }}</li>
+
+
+    </ul>    
+    </div>
+
+    <!-- El script de AngularJS debe estar al final -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/app16.js"></script>
+
+    <script>
+
+    </body>
+</html>
