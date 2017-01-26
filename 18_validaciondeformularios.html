@@ -1,0 +1,90 @@
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>UDEMY - ANGULAR JS</title>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-messages.min.js"></script>
+    <script src="js/app18.js"></script>
+
+  </head>
+
+  <body ng-app="validacion" ng-controller="MainController">
+
+    <h1>UDEMY - ANGULAR JS</h1>
+
+    <p><i>Validación de formularios</i></p>
+    <p>La validación no debe ser total, debe ser en el backend para evitar que los 
+    datos sean alterados por hacking en el frontend</p>
+
+    <form name="formulario">
+
+        <!-- Por cada campo se crea una directiva del modelo y se adicionan directivas de validacion 
+        ng-model="nombre"   Directiva modelo de dato, crea enlace de datos doble
+        ng-minlength        Directiva longitud minima
+        ng-maxlength        Directiva longitud maxima
+        required            Directiva dato requerido              
+        -->
+        <div>
+            <label>Nombre</label>
+            <input type="text" name="nombre" ng-model="nombre" ng-minlength="4" ng-maxlength="10" required>
+        </div>
+        <!-- Con la directiva ng-messages configura un set de mensajes segun el
+        error o errores que se cometa.
+
+        ng-messages recibe un parametro que es el modelo sobre el cual hay errores o no
+        ng-messages="formulario.nombre.$error"
+        
+        formulario.nombre es el dato del modelo
+        $error son el set de errores que se pueden presentar sobre alguno de los requerimientos que no se hayan cumplido
+
+        ng-message="required" se define dentro de la directiva ng-messages . Si el
+        error se cumple, muestra un mensaje segun la definicion del tipo de directiva
+        establecida.
+
+        Para que el bloque <div> del mensaje se muestre, se implementa la directiva ng-if
+        si el formulario ha sido cambiado o tocado usamos [nombreformulario].[datomodelo].$touched
+
+        -->
+        <!--div ng-messages="formulario.nombre.$error" ng-if="formulario.nombre.$touched">
+               <p ng-message="maxlength">El nombre es muy corto</p>
+               <p ng-message="minlength">El nombre es muy largo</p>
+               <p ng-message="required">El nombre es requerido</p>            
+        </div-->
+        <div ng-messages="formulario.apellido.$error" ng-if="formulario.apellido.$touched">
+               <div ng-messages-include="18b_mensajes.html"></div>
+        </div>
+
+        <div>
+            <label>Apellido</label>
+            <input type="text" name="apellido" ng-model="apellido" ng-minlength="4" ng-maxlength="10" required>
+        </div>
+        <!--
+        Podemos reutilizar mensajes por medio de la siguiente directiva
+        ng-messages-include="18b_mensajes.html"
+        -->
+        <div ng-messages="formulario.apellido.$error" ng-if="formulario.apellido.$touched">
+               <div ng-messages-include="18b_mensajes.html"></div>
+        </div>
+
+        <div>
+            <label>Correo Electrónico</label>
+            <input type="text" name="email" ng-model="email" ng-minlength="5" ng-maxlength="20">
+        </div>
+
+        <div>
+            <label>Teléfono</label>
+            <input type="text" name="telefono" ng-model="telefono" ng-minlength="10" ng-maxlength="10">
+        </div>
+
+        <div>
+            <button type="submit">Enviar</button>
+        </div>
+
+    </form>
+
+    <script>
+
+    </body>
+</html>
