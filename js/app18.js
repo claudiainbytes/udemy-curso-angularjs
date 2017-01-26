@@ -1,4 +1,4 @@
-angular.module('validacion', [])
+angular.module('validacion', ['ngMessages'])
        .controller('MainController', function($scope){
           
       });
