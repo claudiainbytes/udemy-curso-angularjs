@@ -1,0 +1,62 @@
+<html ng-app="usuarios">
+
+  <head>
+    <meta charset="utf-8">
+    <title>UDEMY - ANGULAR JS - Servicios - http </title>
+    <!-- Definimos la ruta base de nuestra aplicacion, como esta en un enlace secundario o subdominio, lo establecemos así  -->
+    <base href="/angularjs/udemy-curso-angularjs/servicios/" />
+  </head>
+
+  <body ng-controller="MainController">
+
+    <!-- Los servicios permiten:
+    
+    - Modularizar el codigo para sacarlo del controlador y compartirlo en controladores, directivas, filtros y otros servicios.
+    - Usan el patron de diseño singleton, el cual crea el objeto una sola vez, permanece en memoria para que cualquier objeto pueda acceder a la información
+    - Hay servicios de fabrica como http, route, location
+    - Angular permite la posibilidad de crear nuestros propios servicios con .factory() y .service() que son las mas comunes
+    -->
+
+    <!-- USANDO EL SERVICIO HTTP
+    - Leer una pagina de internet que tiene un archivo JSON
+    - usando el sitio json placeholder de ejemplo https://jsonplaceholder.typicode.com/users
+    - Hay que mostrar una tabla de usuarios mostrando cuatro columnas/campos
+    -->
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav navbar-nav navbar-left">
+                <!-- Configurando cada link, ya definiendo nuestra ruta base en el HEAD, definimos por ejemplo para el link contactenos
+                href="./contactenos" en vez de href="/contactenos" para cargar el contenido a partir de nuestra ruta.
+                El punto ants del slash forward ./ hace que el enlace sea relativo al tag base y no al dominio.
+                -->
+                <li><a href="./">Inicio</a></li>
+                 <li><a href="./nosotros">Nosotros</a></li>
+                  <li><a href="./contactenos">Contactenos</a></li>
+            <ul>
+        </div>
+    </nav>
+
+
+    <!-- En este div se cargará la información sin necesidad de cargar la pagina de una sola vez -->
+    <div>
+        <!-- colocamos la directiva ng-view -->
+        <div ng-view></div>
+    </div>    
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="js/appServicioHttp.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    </body>
+</html>
