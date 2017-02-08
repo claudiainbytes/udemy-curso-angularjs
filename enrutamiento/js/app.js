@@ -24,6 +24,7 @@ angular.module('enrutamiento', ['ngRoute'])
       			redirectTo:'/'
       		});
 
+                  //Activamos en modo de enrutamiento de HTML5 en verdadero si la base esta definida en el encabezado html de la pagina simple
       		$locationProvider.html5Mode(true);
       })
       //Definiendo los controladores

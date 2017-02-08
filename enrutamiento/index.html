@@ -1,0 +1,44 @@
+<html ng-app="enrutamiento">
+
+  <head>
+    <meta charset="utf-8">
+    <title>UDEMY - ANGULAR JS - Enrutamiento </title>
+    <!-- Definimos la ruta base de nuestra aplicacion, como esta en un enlace secundario o subdominio, lo establecemos así  -->
+    <base href="/angularjs/udemy-curso-angularjs/enrutamiento/" />
+  </head>
+
+  <body ng-controller="MainController">
+
+    <!-- El enrutamiento aplica a aplicaciones SPA, single page apps donde no hay reloading de pagina.
+    Carga parte del contenido y lo muestra en un página especificada
+    - Directiva ng-view: area donde mostrará el contenido dinamicamente
+    - ngRoute: Enruta el codigo a la directiva ng-view    
+    -->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav navbar-nav navbar-left">
+                <!-- Configurando cada link, ya definiendo nuestra ruta base en el HEAD, definimos por ejemplo para el link contactenos
+                href="./contactenos" en vez de href="/contactenos" para cargar el contenido a partir de nuestra ruta.
+                El punto ants del slash forward ./ hace que el enlace sea relativo al tag base y no al dominio.
+                -->
+                <li><a href="./">Inicio</a></li>
+                 <li><a href="./nosotros">Nosotros</a></li>
+                  <li><a href="./contactenos">Contactenos</a></li>
+            <ul>
+        </div>
+    </nav>
+
+
+    <!-- En este div se cargará la información sin necesidad de cargar la pagina de una sola vez -->
+    <div>
+        <!-- colocamos la directiva ng-view -->
+        <div ng-view></div>
+    </div>    
+
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+
+    </body>
+</html>
