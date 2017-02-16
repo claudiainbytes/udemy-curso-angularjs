@@ -15,7 +15,9 @@ angular.module('enrutamiento', ['ngRoute'])
       //.service() recibe dos parametros
       //primer parametro: nombre del servicio
       //segundo parametro: funcion del servicio
-      //service se usa la palabra this por que estamos retornando una instancia, la funcion en si es un objeto
+      //service se usa la palabra this por que estamos retornando una instancia, 
+      //la funcion en si es un objeto
+      //retorna la funcion como tal
       .service('servicio', function(){
             //Aqui debemos crear un objeto personalizado
              var usuarios = ['hugo', 'paco', 'luis'];

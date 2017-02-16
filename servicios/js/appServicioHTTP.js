@@ -1,30 +1,21 @@
-angular.module('usuarios', ['ngRoute'])
-      //.factory() recibe dos parametros
-      //primer parametro: nombre del servicio
-      //segundo parametro: funcion del servicio
-      //factory siempre debe retornar un objeto para que sea usado como mi servicio
-      .factory('servicio', function(){
-            //Aqui debemos crear un objeto personalizado
-             var usuarios = ['hugo', 'paco', 'luis'];
-             var miObjeto = {};
-             miObjeto.getUsuarios = function() {
-                  return usuarios;
-             }
-             return miObjeto;     
+//Declaramos nombre modulo, y dependencias vacias o dependencias para pasar
+angular.module('usuarios', [])
+      //Creando el controlador UsuariosController
+      //en la funcion pasamos dos argumentos: el scope y $http
+      //$http es el servicio que estamos pasando como dependencia
+      .controller('UsuariosController', function($scope, $http){
+            //$http.get()accede al contenido del servicio por medio de una url donde estan los usuarios
+            //Cuando haya leido el contenido, el contenido se almacena
+            //en la variable scope.usuarios
+            $http.get('https://jsonplaceholder.typicode.com/users')
+                  .then(function(respuesta) {
+                        $scope.usuarios = respuesta.data;
+                  })     
+      })
+      .run(function(){        
+          $("#UsuariosController").css('visibility','visible').hide().fadeIn().removeClass('hidden'); 
       });
-      //.service() recibe dos parametros
-      //primer parametro: nombre del servicio
-      //segundo parametro: funcion del servicio
-      //service se usa la palabra this por que estamos retornando una instancia, la funcion en si es un objeto
-      .service('servicio', function(){
-            //Aqui debemos crear un objeto personalizado
-             var usuarios = ['hugo', 'paco', 'luis'];
-             this.miObjeto = {};
-             this.getUsuarios = function() {
-                  return usuarios;
-             }
-             //no es necesario retornar el objeto     
-      });
+
 
 
 
