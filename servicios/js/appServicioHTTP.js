@@ -1,4 +1,5 @@
-//Declaramos nombre modulo, y dependencias vacias o dependencias para pasar
+//Declaramos nombre modulo, y dependencias vacias o dependencias para pasar un servicio
+//Como se esta definendo se pasan las dependencias vacias
 angular.module('usuarios', [])
       //Creando el controlador UsuariosController
       //en la funcion pasamos dos argumentos: el scope y $http
@@ -10,13 +11,8 @@ angular.module('usuarios', [])
             $http.get('https://jsonplaceholder.typicode.com/users')
                   .then(function(respuesta) {
                         $scope.usuarios = respuesta.data;
-                  })     
+                  })
       })
-      .run(function(){        
-          $("#UsuariosController").css('visibility','visible').hide().fadeIn().removeClass('hidden'); 
+      .run(function(){
+          $("#UsuariosController").css('visibility','visible').hide().fadeIn().removeClass('hidden');
       });
-
-
-
-
- 

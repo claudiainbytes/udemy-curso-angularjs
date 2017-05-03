@@ -1,0 +1,103 @@
+<html>
+
+    <!-- CREANDO SERVICIOS -->
+
+  <head>
+    <meta charset="utf-8">
+    <title>UDEMY - ANGULAR JS - Creando Servicios - http </title>
+
+    <base href="/angularjs/udemy-curso-angularjs/servicios2/" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  </head>
+
+  <body ng-app="contactos" ng-controller="ContactosController">
+
+    <div class="invisible" class="ng-cloak" id="ContactosController">
+
+      <nav class="navbar navbar-default">
+          <div class="container">
+              <ul class="nav navbar-nav navbar-left">
+                  <!-- Configurando cada link, ya definiendo nuestra ruta base en el HEAD, definimos por ejemplo para el link contactenos
+                  href="./contactenos" en vez de href="/contactenos" para cargar el contenido a partir de nuestra ruta.
+                  El punto ants del slash forward ./ hace que el enlace sea relativo al tag base y no al dominio.
+                  -->
+                  <li><a href="./">Inicio</a></li>
+                   <li><a href="./nosotros">Nosotros</a></li>
+                    <li><a href="./contactenos">Contactenos</a></li>
+              <ul>
+          </div>
+      </nav>
+
+      <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <form>
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input class="form-control" type="text" name="name" ng-model="nuevoContacto.nombre"/>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input class="form-control" type="text" name="correo" ng-model="nuevoContacto.correo"/>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input class="form-control" type="text" name="telefono" ng-model="nuevoContacto.telefono" />
+                </div>
+                <div class="form-group">
+                    <input type="hidden" ng-model="nuevoContacto.id"/>
+                    <button type="submit" class="ntm btn-default" ng-click="guardarContacto()">Guardar</button>
+                </div>
+              </form>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-12">
+          <!-- En esta tabla se cargará la información -->
+          <table class="table table-striped">
+              <tbody>
+                   <tr>
+                      <th>Id</th>
+                      <th>Nombre</th>
+                      <th>Correo Electrónico</th>
+                      <th>Telefono</th>
+                      <th>Opciones</th>
+                  </tr>
+              </tbody>
+              <tbody>
+                <tr ng-repeat="contacto in contactos">
+                  <th>{{contacto.id}}</th>
+                  <td>{{contacto.nombre}}</td>
+                  <td>{{contacto.correo}}</td>
+                  <td>{{contacto.telefono}}</td>
+                  <td>
+                    <a href="#" ng-click="editarContacto(contacto.id)">Editar</a> |
+                    <a href="#" ng-click="borrarContacto(contacto.id)">Borrar</a>
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+          </div>
+      </div>
+
+      </div>
+
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    </body>
+</html>

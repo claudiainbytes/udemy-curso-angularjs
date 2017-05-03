@@ -1,0 +1,56 @@
+<html>
+
+    <!-- SERVICIO $window-->
+
+  <head>
+    <meta charset="utf-8">
+    <title>UDEMY - ANGULAR JS - Servicio $window</title>
+
+    <base href="/angularjs/udemy-curso-angularjs/servicio_window/" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  </head>
+
+  <body ng-app="miModulo">
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav navbar-nav navbar-left">
+                <!-- Configurando cada link, ya definiendo nuestra ruta base en el HEAD, definimos por ejemplo para el link contactenos
+                href="./contactenos" en vez de href="/contactenos" para cargar el contenido a partir de nuestra ruta.
+                El punto ants del slash forward ./ hace que el enlace sea relativo al tag base y no al dominio.
+                -->
+                <li><a href="./">Inicio</a></li>
+                 <li><a href="./nosotros">Nosotros</a></li>
+                  <li><a href="./contactenos">Contactenos</a></li>
+            <ul>
+        </div>
+    </nav>
+
+    <div class="container">
+      <div ng-controller="WindowController">
+        <div class="invisible" class="ng-cloak" id="WindowController">
+          <div class="row">
+            <div class="col-md-12">
+              <button ng-click="mostrarAlerta('Aprende Angular JS Fácilmente!')">Mostrar Alerta</button>
+              <button ng-click="mostrarPrompt()">Mostrar Prompt</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    </body>
+</html>

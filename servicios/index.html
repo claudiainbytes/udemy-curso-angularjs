@@ -1,7 +1,7 @@
 <html>
 
     <!-- Los servicios permiten:
-    
+
     - Modularizar el codigo para sacarlo del controlador y compartirlo en controladores, directivas, filtros y otros servicios.
     - Usan el patron de diseño singleton, el cual crea el objeto una sola vez, permanece en memoria para que cualquier objeto pueda acceder a la información
     - Hay servicios de fabrica como http, route, location
@@ -17,7 +17,7 @@
   <head>
     <meta charset="utf-8">
     <title>UDEMY - ANGULAR JS - Servicios - http </title>
-    <!-- Definimos la ruta base de nuestra aplicacion, como esta en un enlace secundario o subdominio, lo establecemos así 
+    <!-- Definimos la ruta base de nuestra aplicacion, como esta en un enlace secundario o subdominio, lo establecemos así
 
     Hace un llamado a un servidor y carga o lee un archivo JSON para poder leer el archivo
     en nuestra aplicacion
@@ -60,59 +60,59 @@
             <!-- El filtro general busca en todos los campos -->
             <input type="text" ng-model="filtro" class="ng-cloak">
         </div>
-    </div>        
+    </div>
     <div class="row">
         <div class="col-md-12">
         <!-- En esta tabla se cargará la información -->
-        <table class="table table-striped"> 
-            <!-- Utilizando filtros por un campo de columna en especifico -->
-            <!--thead> 
-                <tr> 
-                    <th>#</th> 
-                    <th><input type="text" ng-model="filtro.name"></th> 
-                    <th><input type="text" ng-model="filtro.username"></th> 
+        <table class="table table-striped">
+            <!-- Utilizando filtros en el INPUT por un campo de columna en especifico -->
+            <!--thead>
+                <tr>
+                    <th>#</th>
+                    <th><input type="text" ng-model="filtro.name"></th>
+                    <th><input type="text" ng-model="filtro.username"></th>
                     <th><input type="text" ng-model="filtro.email"></th>
-                    <th><input type="text" ng-model="filtro.address.city"></th> 
-                </tr> 
+                    <th><input type="text" ng-model="filtro.address.city"></th>
+                </tr>
             </thead -->
-            <tbody> 
-                 <tr> 
-                    <th>#</th> 
+            <tbody>
+                 <tr>
+                    <th>#</th>
                     <!-- Usando variables en filtro orderBy asociadas al nombre de la propiedad usuarios llamada name -->
-                    <th ng-click="orden = 'name'">Name</th> 
-                    <th ng-click="orden = 'username'">Userame</th> 
+                    <th ng-click="orden = 'name'">Name</th>
+                    <th ng-click="orden = 'username'">Userame</th>
                     <th ng-click="orden = 'email'">Email</th>
-                    <th ng-click="orden = 'address.street'">Address</th> 
-                </tr>  
-            </tbody> 
-            <tbody> 
+                    <th ng-click="orden = 'address.street'">Address</th>
+                </tr>
+            </tbody>
+            <tbody>
                 <!-- Ordena nombre alfabeticamente ascendentemente -->
-                <!-- tr ng-repeat="usuario in usuarios | filter: filtro | orderBy: 'name'" --> 
+                <!-- tr ng-repeat="usuario in usuarios | filter: filtro | orderBy: 'name'" -->
                 <!-- Ordena nombre alfabeticamente descendentemente -->
                 <!-- tr ng-repeat="usuario in usuarios | filter: filtro | orderBy: '-name'" -->
                 <!-- Usando variables en filtro orderBy llamada orden -->
-                <tr ng-repeat="usuario in usuarios | filter: filtro | orderBy: orden"> 
-                    <th scope="row">{{usuario.id}}</th> 
-                    <td class="ng-cloak">{{usuario.name}}</td> 
-                    <td class="ng-cloak">{{usuario.username}}</td> 
-                    <td class="ng-cloak">{{usuario.email}}</td> 
+                <tr ng-repeat="usuario in usuarios | filter: filtro | orderBy: orden">
+                    <th scope="row">{{usuario.id}}</th>
+                    <td class="ng-cloak">{{usuario.name}}</td>
+                    <td class="ng-cloak">{{usuario.username}}</td>
+                    <td class="ng-cloak">{{usuario.email}}</td>
                     <td class="ng-cloak">{{usuario.address.street +  ", "+ usuario.address.suite + ". " + usuario.address.city }}</td>
-                </tr> 
-            </tbody> 
+                </tr>
+            </tbody>
         </table>
         </div>
-    </div> 
+    </div>
 
-    </div> 
+    </div>
 
-    </div>    
+    </div>
 
     <script src="js/angular.min.js"></script>
     <script src="js/angular-route.min.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="js/appServicioHttp.js"></script>
 
-    
+
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
